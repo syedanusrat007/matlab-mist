@@ -1,0 +1,22 @@
+load in.txt
+m=in;
+n=length(m);
+x=[];
+for i=1:n
+    x=[x i-1 i];
+end
+fprintf('%d ',x);
+fprintf('\n');
+y=[];
+for i=1:n
+if m(i)==0
+    y=[y 0 0];
+else
+   y=[y 1 1];
+end
+end
+fprintf('%d ',y);
+plot(x,y),axis([0,10,-3,3]);
+
+
+    

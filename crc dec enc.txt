@@ -1,0 +1,39 @@
+
+msg=[1 1 1 0 0 0 1 1 ]
+
+poly=[1 1 0 0 1 1]
+
+[M N]=size(poly);
+mseg=[msg zeros(1,N-1)];
+[q r]=deconv(mseg,poly);
+r=abs(r);
+for i=1:length(r)
+    a=r(i);
+    if ( mod(a,2)== 0 )
+        r(i)=0;
+    else
+        r(i)=1;
+    end
+end
+
+crc=r(length(msg)+1:end)
+frame = bitor(mseg,r)
+
+[q1 r1]=deconv(crc,poly);
+r1=abs(r1);
+for i=1:length(r1)
+    a1=r1(i);
+    if ( mod(a1,2)== 0 )
+        r1(i)=0;
+    else
+        r1(i)=1;
+    end
+end
+r1
+frame1 = xor(crc,r1)
+
+
+
+
+
+
